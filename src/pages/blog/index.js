@@ -29,7 +29,7 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query IndexQuery {
+  query BlogQuery {
     allMarkdownRemark {
       totalCount
       edges {

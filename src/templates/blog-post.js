@@ -1,5 +1,4 @@
 import React from 'react'
-import './blogTemplate.css'
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -9,6 +8,7 @@ export default function Template({
   return (
     <div className="blog-post-container">
       <div className="blog-post">
+        <img src={frontmatter.image} alt="" />
         <h1>{frontmatter.title}</h1>
         <h2>{frontmatter.date}</h2>
         <div
@@ -20,12 +20,17 @@ export default function Template({
   )
 }
 
-export const query = graphql`
-  query BlogPostQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+export const pageQuery = graphql`
+  query BlogPostByID($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      id
       html
       frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        image
         title
+        description
+        tags
       }
     }
   }
