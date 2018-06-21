@@ -1,0 +1,9 @@
+.blog-post-container {
+    margin: 0 auto;
+    width: 40vw;
+    text-align: justify
+}
+
+.blog-post-container img {
+    width: 100%;
+}
